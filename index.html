@@ -744,7 +744,7 @@
                 titleEl.innerText = titles[viewName] || 'Dashboard';
             }
 
-            if (viewName === 'products') renderProductGrid();
+            if (viewName === 'products') renderCategoriesGrid(datasets[currentPeriod].data);
             if (viewName === 'comparison') renderComparisonView();
         }
 
@@ -794,50 +794,6 @@
                 modal.classList.add('hidden');
                 document.body.style.overflow = '';
             }, 300);
-        }
-
-        function renderProductGrid() {
-            const data = datasets[currentPeriod].data;
-            const container = document.getElementById('categories-grid');
-            if (!container) return;
-            container.innerHTML = '';
-
-            const grouped = {};
-            data.forEach(item => {
-                if (!grouped[item.category]) grouped[item.category] = { count: 0, items: [] };
-                grouped[item.category].count += item.quantity;
-                grouped[item.category].items.push(item);
-            });
-
-            const sortedCategories = Object.keys(grouped).sort((a, b) => grouped[b].count - grouped[a].count);
-
-            sortedCategories.forEach(cat => {
-                const catData = grouped[cat];
-                if (catData.count <= 0) return;
-
-                const div = document.createElement('div');
-                div.className = 'bg-slate-50 rounded-xl p-5 border border-slate-100 hover:shadow-md transition-shadow page-break-inside-avoid';
-
-                const topItem = catData.items.sort((a, b) => b.quantity - a.quantity)[0];
-
-                div.innerHTML = `
-                    <div class="flex justify-between items-start mb-4">
-                        <h4 class="font-bold text-slate-800">${cat}</h4>
-                        <span class="bg-brand-100 text-brand-700 text-xs font-bold px-2 py-1 rounded-full">${catData.count} un.</span>
-                    </div>
-                    <div class="space-y-3">
-                        <div class="text-sm text-slate-500">
-                            <span class="block text-xs uppercase tracking-wide text-slate-400 mb-1">Top Item</span>
-                            <p class="font-medium text-slate-700 truncate cursor-pointer hover:text-brand-600 hover:underline transition-all" title="Ver todos os itens desta categoria" onclick="openCategoryModal('${cat}')">${topItem.name}</p>
-                            <p class="text-xs text-brand-600 mt-0.5">${topItem.quantity} vendas</p>
-                        </div>
-                        <div class="w-full bg-slate-200 rounded-full h-1.5 mt-2">
-                            <div class="bg-brand-500 h-1.5 rounded-full" style="width: ${Math.min(100, (catData.count / datasets[currentPeriod].total) * 500)}%"></div>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(div);
-            });
         }
 
         // ==========================================
@@ -1078,6 +1034,102 @@
                     <line x1="${padL}" y1="${padT + gH}" x2="${W - padR}" y2="${padT + gH}" stroke="#e2e8f0" stroke-width="1.5"/>
                 </svg>`;
             }
+        }
+
+        function renderCategoriesGrid(data) {
+            const grid = document.getElementById('categories-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            // Group data by category
+            const categoriesMap = {};
+            data.forEach(item => {
+                if (item.quantity <= 0) return;
+                if (!categoriesMap[item.category]) {
+                    categoriesMap[item.category] = {
+                        name: item.category,
+                        totalQuantity: 0,
+                        products: []
+                    };
+                }
+                categoriesMap[item.category].totalQuantity += item.quantity;
+                categoriesMap[item.category].products.push(item);
+            });
+
+            // Sort categories by total quantity desc
+            const sortedCategories = Object.values(categoriesMap).sort((a, b) => b.totalQuantity - a.totalQuantity);
+
+            if (sortedCategories.length === 0) {
+                grid.innerHTML = '<div class="col-span-full text-center text-slate-500 py-12">Nenhuma categoria encontrada com vendas neste período.</div>';
+                return;
+            }
+
+            function getCategoryIcon(catName) {
+                const n = catName.toUpperCase();
+                if (n.includes('BRINDE')) return 'gift';
+                if (n.includes('FONE')) return 'headphones';
+                if (n.includes('CABO') || n.includes('CARREGADOR')) return 'zap';
+                if (n.includes('CHIP')) return 'sim-card'; // fallback if sim-card not available is usually layout or similar, lucide has sim-card? let's use circle-dot if not sure, but 'credit-card' is okay
+                if (n.includes('PAGAMENTO') || n.includes('DESCONTO')) return 'circle-dollar-sign';
+                return 'smartphone'; // default for brands and peliculas
+            }
+
+            sortedCategories.forEach(cat => {
+                // Sort products within category by quantity desc
+                cat.products.sort((a, b) => b.quantity - a.quantity);
+
+                const topProducts = cat.products.slice(0, 3);
+                const remainingCount = cat.products.length - 3;
+
+                const iconName = getCategoryIcon(cat.name);
+
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-[1.25rem] p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow relative overflow-hidden flex flex-col h-full';
+
+                // Add a subtle background accent behind the icon based on the screenshot
+                card.innerHTML = `
+                    <!-- Top Row: Icon & Total -->
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-brand-50 flex items-center justify-center border border-brand-100/50">
+                            <i data-lucide="${iconName}" class="h-5 w-5 text-brand-500"></i>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-[1.75rem] font-extrabold text-slate-800 leading-none tracking-tight">${cat.totalQuantity}</span>
+                            <span class="text-[0.65rem] font-bold text-slate-400 uppercase tracking-widest ml-1">unid</span>
+                        </div>
+                    </div>
+
+                    <!-- Category Name -->
+                    <h4 class="text-center font-bold text-slate-800 tracking-wider uppercase text-sm mb-6 mt-2">
+                        ${cat.name}
+                    </h4>
+
+                    <!-- Top Products List -->
+                    <div class="space-y-3 mb-4 flex-grow">
+                        ${topProducts.map(p => {
+                    const shortName = p.name.length > 25 ? p.name.substring(0, 24) + '...' : p.name;
+                    return `
+                            <div class="flex items-center justify-between text-xs group/item">
+                                <span class="text-slate-500 font-medium truncate pr-4 group-hover/item:text-brand-600 transition-colors" title="${p.name}">${shortName}</span>
+                                <span class="text-slate-800 font-bold bg-slate-50 px-2 py-0.5 rounded-md border border-slate-100 flex-shrink-0">${p.quantity}</span>
+                            </div>
+                            `;
+                }).join('')}
+                    </div>
+
+                    <!-- See More Button -->
+                    ${remainingCount > 0
+                        ? `<button onclick="openCategoryModal('${cat.name}', '${currentPeriod}')" class="mt-auto w-full text-center text-xs font-bold text-brand-500 hover:text-brand-700 py-2 hover:bg-brand-50 rounded-lg transition-colors">
+                            + ${remainingCount} produtos (Clique p/ ver todos)
+                           </button>`
+                        : `<button onclick="openCategoryModal('${cat.name}', '${currentPeriod}')" class="mt-auto w-full text-center text-xs font-bold text-slate-400 hover:text-brand-600 py-2 hover:bg-slate-50 rounded-lg transition-colors">
+                            Ver todos os itens
+                           </button>`
+                    }
+                `;
+
+                grid.appendChild(card);
+            });
         }
 
         // --- Renderização ---
@@ -1440,7 +1492,7 @@
             renderBarChart(data, 'Todas');
             populateBarChartMenu(data);
             renderTable(filteredData);
-            if (currentPeriod) renderProductGrid();
+            if (currentPeriod) renderCategoriesGrid(data);
             lucide.createIcons();
         }
 
