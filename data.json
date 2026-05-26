@@ -1821,5 +1821,51 @@
                 "percentage": 0.0253
             }
         ]
+    },
+    "abr2026": {
+        "label": "Abril 2026",
+        "total": 135,
+        "data": [
+            { "name": "CABO KD 39M KAIDI", "quantity": 1, "percentage": 0.0074 },
+            { "name": "CABO KD TC30 KAIDI", "quantity": 1, "percentage": 0.0074 },
+            { "name": "CAPA REDMI NOTE 12S 4G", "quantity": 1, "percentage": 0.0074 },
+            { "name": "CARREGADOR 20W ESSAGER COMPLETO IPHONE", "quantity": 2, "percentage": 0.0148 },
+            { "name": "CARREGADOR 20W KD KN-108C KDPAN", "quantity": 1, "percentage": 0.0074 },
+            { "name": "CARREGADOR 35W KD-671CC KAIDI COMPLETO", "quantity": 1, "percentage": 0.0074 },
+            { "name": "CHIP CLARO FLEX", "quantity": 1, "percentage": 0.0074 },
+            { "name": "CHIP CLARO PREZÃO", "quantity": 7, "percentage": 0.0519 },
+            { "name": "CHIP TIM PRE C REGARGA", "quantity": 7, "percentage": 0.0519 },
+            { "name": "COPO STANLEY (BRINDE)", "quantity": 1, "percentage": 0.0074 },
+            { "name": "DESCONTO FUNCIONÁRIO", "quantity": 2, "percentage": 0.0148 },
+            { "name": "DESCONTO VENDA", "quantity": 23, "percentage": 0.1704 },
+            { "name": "FONE BLUETOOTH REDMI AIRDOTS (BRINDE)", "quantity": 3, "percentage": 0.0222 },
+            { "name": "GARRAFA HONOR (BRINDE)", "quantity": 6, "percentage": 0.0444 },
+            { "name": "HONOR X5C 4/128 MIDNIGHT BLACK", "quantity": 2, "percentage": 0.0148 },
+            { "name": "HONOR X5C 4/128 OCEAN CYAN", "quantity": 2, "percentage": 0.0148 },
+            { "name": "HONOR X7D 8/256 DESERT GOLD", "quantity": 1, "percentage": 0.0074 },
+            { "name": "HONOR X7D 8/256 OCEAN CYAN", "quantity": 4, "percentage": 0.0296 },
+            { "name": "HONOR X7D 8/256 VELVET BLACK", "quantity": 5, "percentage": 0.0370 },
+            { "name": "IPHONE 13 128 AZUL", "quantity": 1, "percentage": 0.0074 },
+            { "name": "IPHONE 13 128G BRANCO", "quantity": 1, "percentage": 0.0074 },
+            { "name": "IPHONE 13 128G ROSA", "quantity": 1, "percentage": 0.0074 },
+            { "name": "MOTO G05 4/128 VERDE", "quantity": 1, "percentage": 0.0074 },
+            { "name": "MOTO G05 4/128 VERMELHO", "quantity": 4, "percentage": 0.0296 },
+            { "name": "MOTO G05 4/256 PLUM RED", "quantity": 1, "percentage": 0.0074 },
+            { "name": "MOTO G15 4/128 CINZA", "quantity": 2, "percentage": 0.0148 },
+            { "name": "MOTO G15 8/256 GRAVITY GRAY", "quantity": 1, "percentage": 0.0074 },
+            { "name": "MOTO G56 5G 12/256 GREY MIST", "quantity": 1, "percentage": 0.0074 },
+            { "name": "MOTOROLA EDGE 60 5G FUSION 8/256 GREEN", "quantity": 1, "percentage": 0.0074 },
+            { "name": "PAGAMENTO NUOVO(PDV)", "quantity": 9, "percentage": 0.0667 },
+            { "name": "PELICULA HD HYDROGEL STANDARD", "quantity": 16, "percentage": 0.1185 },
+            { "name": "POCO X8 PRO 5G 8/512 WHITE", "quantity": 1, "percentage": 0.0074 },
+            { "name": "REALME C67 8/256 ** S/NFC **SUNNY OASIS", "quantity": 1, "percentage": 0.0074 },
+            { "name": "REALME C71 8/256 FOREST OWL", "quantity": 5, "percentage": 0.0370 },
+            { "name": "REALME C71 8/256 VIOLET PARROT", "quantity": 4, "percentage": 0.0296 },
+            { "name": "REALME C71 8/256 WHITE SWAN", "quantity": 4, "percentage": 0.0296 },
+            { "name": "REALME C85 8/256 KINGFISHER BLUE", "quantity": 5, "percentage": 0.0370 },
+            { "name": "REALME C85 8/256 SWAN BLACK", "quantity": 3, "percentage": 0.0222 },
+            { "name": "REALME NOTE 70 4/128 OBSIDIAN BLACK", "quantity": 1, "percentage": 0.0074 },
+            { "name": "REDMI A5 4/128 PRETO", "quantity": 1, "percentage": 0.0074 }
+        ]
     }
 }
