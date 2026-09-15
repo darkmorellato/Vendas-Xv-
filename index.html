@@ -171,6 +171,7 @@
     <script type="application/json" id="data-bundle">
 {
   "_ordem_exibicao": [
+    "ago2026",
     "jul2026",
     "jun2026",
     "mai2026",
@@ -182,6 +183,57 @@
     "nov2025",
     "out2025"
   ],
+  "ago2026": {
+    "label": "Agosto 2026",
+    "total": 124,
+    "data": [
+      { "name": "ADAPTADOR TOMADA (BRINDE)", "quantity": 2, "percentage": 0.0161 },
+      { "name": "BOTICARIO(BRINDE)", "quantity": 1, "percentage": 0.0081 },
+      { "name": "CARREGADOR 35W KD-671CC KAIDI COMPLETO", "quantity": 2, "percentage": 0.0161 },
+      { "name": "CARREGADOR MOTOROLA 68W", "quantity": 2, "percentage": 0.0161 },
+      { "name": "CHIP CLARO PREZÃO", "quantity": 9, "percentage": 0.0726 },
+      { "name": "CHIP TIM PRE C REGARGA", "quantity": 1, "percentage": 0.0081 },
+      { "name": "COPO STANLEY (BRINDE)", "quantity": 11, "percentage": 0.0887 },
+      { "name": "DESCONTO VENDA", "quantity": 10, "percentage": 0.0806 },
+      { "name": "FONE BLUETOOTH REDMI AIRDOTS (BRINDE)", "quantity": 4, "percentage": 0.0323 },
+      { "name": "HONOR X5C 4/128 MIDNIGHT BLACK", "quantity": 3, "percentage": 0.0242 },
+      { "name": "HONOR X5C 4/128 OCEAN CYAN", "quantity": 2, "percentage": 0.0161 },
+      { "name": "HONOR X7D 8/256 DESERT GOLD", "quantity": 1, "percentage": 0.0081 },
+      { "name": "HONOR X7D 8/256 VELVET BLACK", "quantity": 2, "percentage": 0.0161 },
+      { "name": "HOTWAV A17 PRO MAX 4G 4/256 ORANGE", "quantity": 1, "percentage": 0.0081 },
+      { "name": "IPHONE 13 128 AZUL (SEMINOVO)", "quantity": 1, "percentage": 0.0081 },
+      { "name": "IPHONE 13 128G ROSA (SEMINOVO)", "quantity": 1, "percentage": 0.0081 },
+      { "name": "IPHONE 15 128 AZUL (SEMINOVO)", "quantity": 1, "percentage": 0.0081 },
+      { "name": "IPHONE 15 PRO 128 AZUL (SEMINOVO)", "quantity": 1, "percentage": 0.0081 },
+      { "name": "IPHONE 15 PRO MAX 256G TITANIUM BLACK (SEMINOVO)", "quantity": 1, "percentage": 0.0081 },
+      { "name": "IPHONE 15 PRO MAX 256G TITANIUM BLUE (SEMINOVO)", "quantity": 1, "percentage": 0.0081 },
+      { "name": "IPHONE 15 PRO MAX 512G TITANIUM BLACK (SEMINOVO)", "quantity": 1, "percentage": 0.0081 },
+      { "name": "MOTO G06 4/128 AZUL", "quantity": 1, "percentage": 0.0081 },
+      { "name": "MOTO G06 4/128 VERDE", "quantity": 2, "percentage": 0.0161 },
+      { "name": "MOTO G17 4/256 ROXO", "quantity": 1, "percentage": 0.0081 },
+      { "name": "MOTO G56 5G 8/256 GRAY MIST", "quantity": 1, "percentage": 0.0081 },
+      { "name": "MOTOROLA EDGE 60 5G FUSION 8/256 GREEN", "quantity": 1, "percentage": 0.0081 },
+      { "name": "MOTOROLA EDGE 60 5G FUSION 8/256 GREY", "quantity": 1, "percentage": 0.0081 },
+      { "name": "PAGAMENTO NUOVO(PDV)", "quantity": 5, "percentage": 0.0403 },
+      { "name": "PELICULA HD HYDROGEL STANDARD", "quantity": 18, "percentage": 0.1452 },
+      { "name": "PELICULA PRIVACIDADE HYDROGEL SUPER PREMIUM", "quantity": 3, "percentage": 0.0242 },
+      { "name": "PELICULA TRASEIRA DESENHOS", "quantity": 1, "percentage": 0.0081 },
+      { "name": "POCO X8 PRO 5G 12/512 WHITE", "quantity": 1, "percentage": 0.0081 },
+      { "name": "REALME C71 8/256 FOREST OWL", "quantity": 4, "percentage": 0.0323 },
+      { "name": "REALME C71 8/256 VIOLET PARROT", "quantity": 3, "percentage": 0.0242 },
+      { "name": "REALME C71 8/256 WHITE SWAN", "quantity": 2, "percentage": 0.0161 },
+      { "name": "REALME C85 8/256 SWAN BLACK", "quantity": 2, "percentage": 0.0161 },
+      { "name": "REALME C85 PRO 8/256 PARROT PURPLE", "quantity": 1, "percentage": 0.0081 },
+      { "name": "REALME NOTE 70 4/128 BEACH GOLD", "quantity": 1, "percentage": 0.0081 },
+      { "name": "REALME NOTE 70 4/128 OBSIDIAN BLACK", "quantity": 5, "percentage": 0.0403 },
+      { "name": "REALME P4 LITE 4/128 PULSE PURPLE", "quantity": 1, "percentage": 0.0081 },
+      { "name": "REALME P4 LITE 4/128 TITAN GREY", "quantity": 2, "percentage": 0.0161 },
+      { "name": "SAMSUNG A07 4G 8/256 BLACK", "quantity": 1, "percentage": 0.0081 },
+      { "name": "SAMSUNG A07 4G 8/256 GREEN", "quantity": 3, "percentage": 0.0242 },
+      { "name": "SAMSUNG A07 4G 8/256 VIOLET", "quantity": 4, "percentage": 0.0323 },
+      { "name": "TAXA DO CARTÃO", "quantity": 2, "percentage": 0.0161 }
+    ]
+  },
   "jul2026": {
     "label": "Julho 2026",
     "total": 103,
@@ -2844,6 +2896,7 @@
         let sortState = { column: 'quantity', direction: 'desc' };
         let filteredData = [];
         let currentBarChartFilter = 'Todas';
+        let displayOrder = [];
 
         // --- Funções Auxiliares ---
 
@@ -2962,7 +3015,10 @@
             const kpiGrid = document.getElementById('comparison-kpi-grid');
             if (kpiGrid) {
                 kpiGrid.innerHTML = '';
-                const periods = [['fev2026', 'jan2026'], ['jan2026', 'dez2025'], ['dez2025', 'nov2025'], ['nov2025', 'out2025']];
+                const periods = [];
+                for (let i = 0; i < periodOrder.length - 1; i++) {
+                    periods.push([periodOrder[i], periodOrder[i + 1]]);
+                }
                 periods.forEach(([curr, prev]) => {
                     const cTotal = datasets[curr]?.total ?? 0;
                     const pTotal = datasets[prev]?.total ?? 0;
@@ -2973,13 +3029,13 @@
                     card.className = 'bg-white p-6 border border-stone-200 hover:border-stone-300 transition-all duration-300 group relative overflow-hidden';
                     card.innerHTML = `
                         <div class="flex items-center justify-between mb-3">
-                            <span class="text-xs font-bold uppercase tracking-[0.2em] text-stone-400">${periodLabels[curr]}</span>
+                            <span class="text-xs font-bold uppercase tracking-[0.2em] text-stone-400">${periodLabels[curr] || curr}</span>
                             <span class="px-2 py-0.5 text-xs font-bold ${isUp ? 'text-stone-600 border border-stone-200' : 'text-stone-500 border border-stone-200'} uppercase tracking-[0.1em]">
                                 ${isUp ? '+' : ''} ${Math.abs(pct)}%
                             </span>
                         </div>
                         <p class="text-3xl font-serif font-bold text-stone-900 tracking-tight">${cTotal}</p>
-                        <p class="text-xs text-stone-400 mt-1">vs ${periodLabels[prev]}: <span class="font-semibold ${isUp ? 'text-stone-700' : 'text-stone-500'}">${isUp ? '+' : ''}${diff} un.</span></p>
+                        <p class="text-xs text-stone-400 mt-1">vs ${periodLabels[prev] || prev}: <span class="font-semibold ${isUp ? 'text-stone-700' : 'text-stone-500'}">${isUp ? '+' : ''}${diff} un.</span></p>
                         <div class="w-full bg-stone-100 h-[3px] mt-4">
                             <div class="h-[3px] ${isUp ? 'bg-[#c4b5a0]' : 'bg-[#c4a3a3]'}" style="width:${Math.min(100, (cTotal / 225) * 100)}%"></div>
                         </div>
@@ -2989,12 +3045,23 @@
             }
 
             // -- Category Summary Table (rendered immediately, no layout dependency) --
+            const theadTr = document.querySelector('#view-comparison table thead tr');
+            if (theadTr && periodOrder.length >= 2) {
+                theadTr.innerHTML = `
+                    <th class="px-8 py-5 tracking-[0.15em]">Categoria</th>
+                    ${periodOrder.map(k => `<th class="px-6 py-5 text-center tracking-[0.15em]">${periodLabels[k] || k}</th>`).join('')}
+                    <th class="px-6 py-5 text-center tracking-[0.15em]">Delta Mensal</th>
+                `;
+            }
+
             const tbody = document.getElementById('comparison-table-body');
             if (tbody) {
                 tbody.innerHTML = '';
                 const allCatNames = [...new Set(
                     periodOrder.flatMap(k => Object.keys(getCategoryTotals(k)))
                 )].sort();
+
+                const deltaTitle = `${periodLabels[periodOrder[0]] || 'Atual'} vs ${periodLabels[periodOrder[1]] || 'Anterior'}`;
 
                 allCatNames.forEach(cat => {
                     const vals = periodOrder.map(k => getCategoryTotals(k)[cat] || 0);
@@ -3009,7 +3076,7 @@
                         ${vals.map((v, i) => `<td class="px-6 py-4 text-center font-mono text-sm font-medium ${i === 0 ? 'text-stone-900 font-bold' : 'text-stone-600'}">${v || '\u2014'}</td>`).join('')}
                         <td class="px-6 py-4 text-center">
                             <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold ${isUp ? 'text-stone-700 border border-stone-200' : 'text-stone-500 border border-stone-200'} uppercase tracking-[0.1em]"
-                            title="Fev 2026 vs Jan 2026">
+                            title="${deltaTitle}">
                                 ${isUp ? '+' : ''}${delta}
                             </span>
                         </td>
@@ -3028,7 +3095,8 @@
                     <td class="px-8 py-4 font-serif font-bold text-stone-900">TOTAL GERAL</td>
                     ${totalVals.map((v, i) => `<td class="px-6 py-4 text-center font-bold ${i === 0 ? 'text-stone-900' : 'text-stone-700'}">${v}</td>`).join('')}
                     <td class="px-6 py-4 text-center">
-                        <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold ${tUp ? 'text-stone-700 border border-stone-300' : 'text-stone-500 border border-stone-200'} uppercase tracking-[0.1em]">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-bold ${tUp ? 'text-stone-700 border border-stone-300' : 'text-stone-500 border border-stone-200'} uppercase tracking-[0.1em]"
+                        title="${deltaTitle}">
                             ${tUp ? '+' : ''}${tDelta}
                         </span>
                     </td>
@@ -3108,20 +3176,22 @@
                 </svg>`;
             }
 
-            // ── BAR CHART (SVG) ─ Comparativo Fev vs Jan ──────────────────────
+            // ── BAR CHART (SVG) ─ Comparativo Mais Recente vs Anterior ───────
             const barDiv = document.getElementById('categoryCompareChart');
             if (barDiv) {
-                const catsFev = getCategoryTotals('fev2026');
-                const catsJan = getCategoryTotals('jan2026');
-                const allCats = [...new Set([...Object.keys(catsFev), ...Object.keys(catsJan)])]
-                    .sort((a, b) => (catsFev[b] || 0) - (catsFev[a] || 0));
+                const k1 = periodOrder[0] || 'ago2026';
+                const k2 = periodOrder[1] || 'jul2026';
+                const cats1 = getCategoryTotals(k1);
+                const cats2 = getCategoryTotals(k2);
+                const allCats = [...new Set([...Object.keys(cats1), ...Object.keys(cats2)])]
+                    .sort((a, b) => (cats1[b] || 0) - (cats1[a] || 0));
 
                 const nBars = allCats.length;
                 const W = Math.max(860, nBars * 70);
                 const H = 340, padL = 50, padR = 20, padT = 50, padB = 70;
                 const gW = W - padL - padR;
                 const gH = H - padT - padB;
-                const maxV = Math.max(...allCats.flatMap(c => [catsFev[c] || 0, catsJan[c] || 0]), 1);
+                const maxV = Math.max(...allCats.flatMap(c => [cats1[c] || 0, cats2[c] || 0]), 1);
                 const groupW = gW / nBars;
                 const barW = Math.min((groupW - 12) / 2, 28);
 
@@ -3138,19 +3208,19 @@
                 ).join('');
 
                 const bars = allCats.map((cat, i) => {
-                    const vFev = catsFev[cat] || 0;
-                    const vJan = catsJan[cat] || 0;
+                    const v1 = cats1[cat] || 0;
+                    const v2 = cats2[cat] || 0;
                     const cx = padL + i * groupW + groupW / 2;
-                    const hFev = (vFev / maxV) * gH;
-                    const hJan = (vJan / maxV) * gH;
+                    const h1 = (v1 / maxV) * gH;
+                    const h2 = (v2 / maxV) * gH;
                     const shortCat = cat.length > 8 ? cat.slice(0, 7) + '\u2026' : cat;
                     return `
-                        <rect x="${cx - barW - 2}" y="${padT + gH - hFev}" width="${barW}" height="${hFev}"
+                        <rect x="${cx - barW - 2}" y="${padT + gH - h1}" width="${barW}" height="${h1}"
                             fill="#c4b5a0"/>
-                        ${vFev > 0 ? `<text x="${cx - barW / 2 - 2}" y="${padT + gH - hFev - 5}" text-anchor="middle" font-size="10" font-weight="600" fill="#8b7e6a">${vFev}</text>` : ''}
-                        <rect x="${cx + 2}" y="${padT + gH - hJan}" width="${barW}" height="${hJan}"
+                        ${v1 > 0 ? `<text x="${cx - barW / 2 - 2}" y="${padT + gH - h1 - 5}" text-anchor="middle" font-size="10" font-weight="600" fill="#8b7e6a">${v1}</text>` : ''}
+                        <rect x="${cx + 2}" y="${padT + gH - h2}" width="${barW}" height="${h2}"
                             fill="#a3b8c4"/>
-                        ${vJan > 0 ? `<text x="${cx + barW / 2 + 2}" y="${padT + gH - hJan - 5}" text-anchor="middle" font-size="10" font-weight="600" fill="#7a9aae">${vJan}</text>` : ''}
+                        ${v2 > 0 ? `<text x="${cx + barW / 2 + 2}" y="${padT + gH - h2 - 5}" text-anchor="middle" font-size="10" font-weight="600" fill="#7a9aae">${v2}</text>` : ''}
                         <text x="${cx}" y="${H - padB + 16}" text-anchor="middle" font-size="10" fill="#8b7e6a">${shortCat}</text>
                     `;
                 }).join('');
@@ -3158,9 +3228,9 @@
                 // Legend
                 const legend = `
                     <rect x="${padL}" y="12" width="12" height="12" fill="#c4b5a0"/>
-                    <text x="${padL + 16}" y="22" font-size="12" fill="#57534e" font-weight="600">Fev 2026</text>
+                    <text x="${padL + 16}" y="22" font-size="12" fill="#57534e" font-weight="600">${periodLabels[k1] || k1}</text>
                     <rect x="${padL + 90}" y="12" width="12" height="12" fill="#a3b8c4"/>
-                    <text x="${padL + 106}" y="22" font-size="12" fill="#57534e" font-weight="600">Jan 2026</text>
+                    <text x="${padL + 106}" y="22" font-size="12" fill="#57534e" font-weight="600">${periodLabels[k2] || k2}</text>
                 `;
 
                 barDiv.innerHTML = `
@@ -3567,11 +3637,7 @@
 
             currentBarChartFilter = 'Todas';
 
-            let label = '';
-            if (period === 'jan2026') label = 'Janeiro 2026';
-            else if (period === 'dez2025') label = 'Dezembro 2025';
-            else if (period === 'nov2025') label = 'Novembro 2025';
-            else label = 'Outubro 2025';
+            let label = periodLabels[period] || period;
 
             const titleEl = document.getElementById('page-title');
             if (titleEl) titleEl.innerText = `Visão Geral - ${label}`;
@@ -3582,15 +3648,15 @@
                 let comparisonLabel = "";
 
                 // Determine previous period for comparison
-                if (period === 'jan2026') {
-                    prevTotal = datasets['dez2025'].total;
-                    comparisonLabel = "vs. Dez";
-                } else if (period === 'dez2025') {
-                    prevTotal = datasets['nov2025'].total;
-                    comparisonLabel = "vs. Nov";
-                } else if (period === 'nov2025') {
-                    prevTotal = datasets['out2025'].total;
-                    comparisonLabel = "vs. Out";
+                const pIdx = displayOrder.indexOf(period);
+                if (pIdx !== -1 && pIdx + 1 < displayOrder.length) {
+                    const prevKey = displayOrder[pIdx + 1];
+                    if (datasets[prevKey]) {
+                        prevTotal = datasets[prevKey].total;
+                        const prevName = periodLabels[prevKey] || prevKey;
+                        const shortPrev = prevName.split(' ')[0].substring(0, 3);
+                        comparisonLabel = `vs. ${shortPrev}`;
+                    }
                 }
 
                 if (prevTotal > 0) {
@@ -3700,6 +3766,7 @@
                 // Ordem de exibição definida no JSON (ou alfabética como fallback)
                 const ordem = (json._ordem_exibicao || Object.keys(rawDatasets))
                     .filter(k => rawDatasets[k] && rawDatasets[k].total > 0);
+                displayOrder = ordem;
 
                 // Popula o <select> dinamicamente
                 const sel = document.getElementById('period-selector');
